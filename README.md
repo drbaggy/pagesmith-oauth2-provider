@@ -169,7 +169,7 @@ Timings using `Benchmark::cmpthese`
 | DNF       | 20,284/s |   317% |     276% |     181% |    *141%* |    --  |    -12% |
 | DNF_opt   | 22,989/s |   373% |     326% |     219% |    *173%* |    13% |      -- |
 
-We can see that this "optimal method" is somwhere betwen 4.5 and 5 times more efficient
+We can see that this "optimal method" is somewhere betwen 4.5 and 5 times more efficient
 than the "search" function.
 
 ## Test script
@@ -344,20 +344,26 @@ sub longest_no_comments {
 
 ## The results...
 
+Here are the results for each of the four databases:
+
 ```
 british-english-small - max length 6 - 21 words
+
   abhors accent accept access accost almost
   begins bellow billow cellos chills chilly
   chimps chintz choosy choppy effort floors
   floppy glossy knotty
 
 british-english-large - max length 7 - 1 word
+
   billowy
 
 british-english-huge - max length 7 - 4 words
+
   beefily billowy chikors dikkops
 
 british-english-insane - max length 8 - 1 word
+
   aegilops
 ```
 
