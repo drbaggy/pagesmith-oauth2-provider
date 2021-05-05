@@ -257,8 +257,8 @@ as I am in UK - I will use the British English dictionaries:
 ## Assumptions into what really is a word
 
 These dictionaries contain a number of "Words" which we wouldn't
-necessarily consider to be words. Words with hyphens/apostrophes,
-words starting with capital letters.
+necessarily consider to be words. To simplify this we will only
+chose words which are all lowercase.
 
 So we will filter these words out...
 
@@ -281,7 +281,7 @@ There are 4 parts to the loop...
 
  * The filters as above...
 
-   `!/\W/ && !/^[A-Z]/`
+   `!/[^a-z]/`
 
 * A filter that skips words shorter than the max length
    
@@ -304,11 +304,11 @@ sub longest {
   open my $fh, q(<), $_[0];
   my @max = (0);
      (chomp)         ## Remove newline character
-  && !/\W/           ## Remove words with non-alpha chars
-  && !/^[A-Z]/       ## Remove words starting with a capital
+  #&& !/\W/           ## Remove words with non-alpha chars
+  && !/[^a-z]/       ## Remove words starting with a capital
   && ( $max[0] <= length $_ )
                      ## Remove words that are too short
-  && ( lc $_ eq join q(), sort split //, lc $_ )
+  && ( $_ eq join q(), sort split //, $_ )
                      ## Check the word is unchanged when the
                      ## letters are sorted
   && ( $max[0] == length $_
@@ -334,10 +334,10 @@ If you like the code more compact - here it is without the comments...
 sub longest_no_comments {
   open my $fh, q(<), $_[0];
   my @m = (0);
-  (chomp)&&!/\W/&&!/^[A-Z]/&&($m[0]<=length$_)&&
-    (lc$_ eq join q(),sort split//,lc$_)&&
-    ($m[0]==length$_?(push@m,$_):(@m=(length$_,$_)))
-    while <$fh>;
+     (chomp)&&!/[^a-z]/&&($m[0]<=length$_)
+  &&($_ eq join q(),sort split//,$_)
+  &&($m[0]==length$_?(push@m,$_):(@m=(length$_,$_)))
+     while <$fh>;
   return "$_[0] > @m";
 }
 ```
