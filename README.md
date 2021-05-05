@@ -1,4 +1,4 @@
-# Challenge 1
+# Challenge 1 - Search Matrix
 
 You are given 5x5 matrix filled with integers such that each row is sorted from left to
 right and the first integer of each row is greater than the last integer of the previous
@@ -235,7 +235,7 @@ cmpthese(100_000, {
 });
 ```
 
-# Challenge 2
+# Challenge 2 - Ordered Letters
 
 Given a word, you can sort its letters alphabetically (case insensitive).
 For example, “beekeeper” becomes “beeeeekpr” and “dictionary” becomes
